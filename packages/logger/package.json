@@ -1,0 +1,28 @@
+{
+  "name": "@gyraff/logger",
+  "version": "1.0.14",
+  "description": "Gyraff - The default application logger",
+  "main": "./dist/index.js",
+  "types": "./types/index.d.ts",
+  "scripts": {
+    "tsc": "tsc"
+  },
+  "keywords": [],
+  "author": "Weyoss <weyoss@protonmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "winston": "3.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/weyoss/gyraff.git",
+    "repository": "packages/logger"
+  },
+  "homepage": "https://github.com/weyoss/gyraff/tree/master/packages/logger",
+  "bugs": {
+    "url": "https://github.com/weyoss/gyraff/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

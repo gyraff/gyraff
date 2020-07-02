@@ -1,0 +1,37 @@
+{
+  "name": "@gyraff/factory",
+  "description": "Gyraff - Composable factory functions",
+  "version": "1.0.13",
+  "main": "./dist/index.js",
+  "types": "./types/index.d.ts",
+  "dependencies": {
+    "@gyraff/error": "^1.0.13",
+    "lodash": "4.17.15"
+  },
+  "scripts": {
+    "tsc": "tsc"
+  },
+  "author": "Weyoss <weyoss@protonmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "factory",
+    "composable-factory",
+    "composition",
+    "composable-factory-functions",
+    "cff",
+    "opp",
+    "object-oriented-programming"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/weyoss/gyraff.git",
+    "repository": "packages/factory"
+  },
+  "homepage": "https://github.com/weyoss/gyraff/tree/master/packages/factory",
+  "bugs": {
+    "url": "https://github.com/weyoss/gyraff/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

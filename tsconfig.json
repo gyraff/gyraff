@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es6",
+    "sourceMap": true,
+    "declaration": false,
+    "esModuleInterop": true,
+    "outDir": "./dist",
+    "strict": true,
+    "removeComments": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "test",
+    "packages/framework/README.md",
+    "src/**/*.test.ts"
+  ]
+}

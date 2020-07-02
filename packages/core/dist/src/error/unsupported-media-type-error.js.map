@@ -1,0 +1,1 @@
+{"version":3,"file":"unsupported-media-type-error.js","sourceRoot":"","sources":["../../../src/error/unsupported-media-type-error.ts"],"names":[],"mappings":";;;AAAA,yCAAuG;AAEvG,SAAgB,0BAA0B;IACtC,OAAO,MAAM,yBAA0B,SAAQ,iBAAS;QACpD,YAAY,SAAyC,EAAE;YACnD,KAAK,CAAC,MAAM,EAAE;gBACV,OAAO,EAAE,8BAA8B;gBACvC,cAAc,EAAE,GAAG;aACtB,CAAC,CAAC;QACP,CAAC;KACJ,CAAC;AACN,CAAC;AATD,gEASC"}
