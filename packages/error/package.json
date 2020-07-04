@@ -15,12 +15,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/weyoss/gyraff.git",
+    "url": "https://github.com/gyraff/gyraff.git",
     "repository": "packages/error"
   },
-  "homepage": "https://github.com/weyoss/gyraff/tree/master/packages/error",
+  "homepage": "https://github.com/gyraff/gyraff/tree/master/packages/error",
   "bugs": {
-    "url": "https://github.com/weyoss/gyraff/issues"
+    "url": "https://github.com/gyraff/gyraff/issues"
   },
   "publishConfig": {
     "access": "public"

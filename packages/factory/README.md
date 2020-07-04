@@ -319,7 +319,7 @@ const car = Car();
 
 ## License
 
-[MIT](https://github.com/weyoss/composable-factory/blob/master/LICENSE)
+[MIT](https://github.com/gyraff/gyraff/blob/master/packages/factory/LICENSE)
 
 
 

@@ -1,7 +1,7 @@
 {
   "name": "@gyraff/validator",
   "version": "1.0.17",
-  "description": "Gyraff - A simple JSON Schema validator",
+  "description": "Gyraff - A simple JSON Schema validator based on ZSchema",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
   "scripts": {
@@ -17,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/weyoss/gyraff.git",
+    "url": "https://github.com/gyraff/gyraff.git",
     "repository": "packages/validator"
   },
-  "homepage": "https://github.com/weyoss/gyraff/tree/master/packages/validator",
+  "homepage": "https://github.com/gyraff/gyraff/tree/master/packages/validator",
   "bugs": {
-    "url": "https://github.com/weyoss/gyraff/issues"
+    "url": "https://github.com/gyraff/gyraff/issues"
   },
   "publishConfig": {
     "access": "public"

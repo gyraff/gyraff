@@ -1,7 +1,7 @@
 {
   "name": "@gyraff/repository",
   "version": "1.0.18",
-  "description": "Gyraff - The repository design pattern implementation providing data access abstraction",
+  "description": "Gyraff - Repository design pattern implementation",
   "author": "Weyoss <weyoss@protonmail.com>",
   "license": "MIT",
   "main": "./dist/index.js",
@@ -18,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/weyoss/gyraff.git",
+    "url": "https://github.com/gyraff/gyraff.git",
     "repository": "packages/repository"
   },
-  "homepage": "https://github.com/weyoss/gyraff/tree/master/packages/repository",
+  "homepage": "https://github.com/gyraff/gyraff/tree/master/packages/repository",
   "bugs": {
-    "url": "https://github.com/weyoss/gyraff/issues"
+    "url": "https://github.com/gyraff/gyraff/issues"
   },
   "publishConfig": {
     "access": "public"

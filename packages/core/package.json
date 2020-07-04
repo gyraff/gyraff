@@ -7,7 +7,16 @@
   "scripts": {
     "tsc": "tsc"
   },
-  "keywords": [],
+  "keywords": [
+    "framework",
+    "koa",
+    "di",
+    "service-container",
+    "repository",
+    "opp",
+    "object-oriented-programming",
+    "typescript"
+  ],
   "author": "Weyoss <weyoss@protonmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -32,12 +41,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/weyoss/gyraff.git",
+    "url": "https://github.com/gyraff/gyraff.git",
     "repository": "packages/core"
   },
-  "homepage": "https://github.com/weyoss/gyraff/tree/master/packages/framework",
+  "homepage": "https://github.com/gyraff/gyraff/tree/master/packages/core",
   "bugs": {
-    "url": "https://github.com/weyoss/gyraff/issues"
+    "url": "https://github.com/gyraff/gyraff/issues"
   },
   "devDependencies": {
     "@types/express-useragent": "1.0.0",

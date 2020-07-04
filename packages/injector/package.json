@@ -1,7 +1,7 @@
 {
   "name": "@gyraff/injector",
   "version": "1.0.19",
-  "description": "Gyraff - The service container implementation",
+  "description": "Gyraff - Service container implementation",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
   "scripts": {
@@ -18,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/weyoss/gyraff.git",
+    "url": "https://github.com/gyraff/gyraff.git",
     "repository": "packages/injector"
   },
-  "homepage": "https://github.com/weyoss/gyraff/tree/master/packages/injector",
+  "homepage": "https://github.com/gyraff/gyraff/tree/master/packages/injector",
   "bugs": {
-    "url": "https://github.com/weyoss/gyraff/issues"
+    "url": "https://github.com/gyraff/gyraff/issues"
   },
   "publishConfig": {
     "access": "public"

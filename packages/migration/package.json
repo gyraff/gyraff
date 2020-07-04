@@ -1,7 +1,7 @@
 {
   "name": "@gyraff/migration",
   "version": "1.0.15",
-  "description": "Gyraff - Automated migration and seeding",
+  "description": "Gyraff - Automated migrations and seeding",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
   "scripts": {
@@ -18,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/weyoss/gyraff.git",
+    "url": "https://github.com/gyraff/gyraff.git",
     "repository": "packages/migration"
   },
-  "homepage": "https://github.com/weyoss/gyraff/tree/master/packages/migration",
+  "homepage": "https://github.com/gyraff/gyraff/tree/master/packages/migration",
   "bugs": {
-    "url": "https://github.com/weyoss/gyraff/issues"
+    "url": "https://github.com/gyraff/gyraff/issues"
   },
   "publishConfig": {
     "access": "public"

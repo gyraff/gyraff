@@ -24,12 +24,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/weyoss/gyraff.git",
+    "url": "https://github.com/gyraff/gyraff.git",
     "repository": "packages/factory"
   },
-  "homepage": "https://github.com/weyoss/gyraff/tree/master/packages/factory",
+  "homepage": "https://github.com/gyraff/gyraff/tree/master/packages/factory",
   "bugs": {
-    "url": "https://github.com/weyoss/gyraff/issues"
+    "url": "https://github.com/gyraff/gyraff/issues"
   },
   "publishConfig": {
     "access": "public"
