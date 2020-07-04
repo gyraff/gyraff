@@ -1,6 +1,6 @@
 {
   "name": "@gyraff/model",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Gyraff - The base model",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
@@ -11,9 +11,9 @@
   "author": "Weyoss <weyoss@protonmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@gyraff/error": "^1.0.14",
-    "@gyraff/factory": "^1.0.14",
-    "@gyraff/validator": "^1.0.17",
+    "@gyraff/error": "^1.0.15",
+    "@gyraff/factory": "^1.0.15",
+    "@gyraff/validator": "^1.0.18",
     "lodash": "4.17.15"
   },
   "repository": {

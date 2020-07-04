@@ -1,6 +1,6 @@
 {
   "name": "@gyraff/logger",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Gyraff - The default application logger",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
