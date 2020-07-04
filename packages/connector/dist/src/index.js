@@ -4,9 +4,11 @@ exports.getConnector = exports.getConnectorsNames = exports.setConfig = exports.
 const sqlite_1 = require("./connectors/rdms/sqlite");
 const ioredis_1 = require("./connectors/redis/ioredis");
 const redis_1 = require("./connectors/redis/redis");
+const mysql_1 = require("./connectors/rdms/mysql");
 const error_1 = require("./error");
 let config;
 const connectors = {
+    MySQLStorageConnector: mysql_1.MySQLStorageConnector,
     SQLiteStorageConnector: sqlite_1.SQLiteStorageConnector,
     IORedisStorageConnector: ioredis_1.IORedisStorageConnector,
     RedisStorageConnector: redis_1.RedisStorageConnector,
