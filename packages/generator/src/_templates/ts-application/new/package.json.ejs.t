@@ -32,7 +32,7 @@ unless_exists: true
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
-    "@gyraff/core": "1.0.45"
+    "@gyraff/core": "1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
