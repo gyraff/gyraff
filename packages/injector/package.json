@@ -1,6 +1,6 @@
 {
   "name": "@gyraff/injector",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "Gyraff - The service container implementation",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
@@ -11,7 +11,7 @@
   "author": "Weyoss <weyoss@protonmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@gyraff/error": "^1.0.13",
+    "@gyraff/error": "^1.0.14",
     "bottlejs": "1.7.2",
     "glob": "7.1.6",
     "lodash": "4.17.15"

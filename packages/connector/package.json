@@ -1,6 +1,6 @@
 {
   "name": "@gyraff/connector",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Gyraff - Storage connector",
   "author": "Weyoss <weyoss@protonmail.com>",
   "license": "MIT",
@@ -10,8 +10,8 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@gyraff/error": "^1.0.13",
-    "@gyraff/factory": "^1.0.13",
+    "@gyraff/error": "^1.0.14",
+    "@gyraff/factory": "^1.0.14",
     "ioredis": "4.16.3",
     "knex": "0.21.0",
     "redis": "3.0.2",

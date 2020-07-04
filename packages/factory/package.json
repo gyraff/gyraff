@@ -1,11 +1,11 @@
 {
   "name": "@gyraff/factory",
   "description": "Gyraff - Composable factory functions",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
   "dependencies": {
-    "@gyraff/error": "^1.0.13",
+    "@gyraff/error": "^1.0.14",
     "lodash": "4.17.15"
   },
   "scripts": {
