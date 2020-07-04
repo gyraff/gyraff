@@ -7,7 +7,7 @@ import { StorageConnectorError } from './error';
 
 let config: ConfigInterface;
 
-const connectors = {
+const connectors: { [name: string]: StorageConnectorFactoryType } = {
     SQLiteStorageConnector,
     IORedisStorageConnector,
     RedisStorageConnector,
@@ -16,11 +16,10 @@ const connectors = {
 const connectorsInstances: { [name: string]: StorageConnectorInterface } = {};
 
 export function registerConnector(name: string, connector: StorageConnectorFactoryType): void {
-    const ctrs = connectors as any;
-    if (ctrs[name]) {
-        throw new StorageConnectorError(`A connector with name [${name}] already exists.`);
+    if (connectors.hasOwnProperty(name)) {
+        throw new StorageConnectorError(`The storage connector [${name}] already exists.`);
     }
-    ctrs[name] = connector;
+    connectors[name] = connector;
 }
 
 export function setConfig(cfg: ConfigInterface): void {
@@ -38,15 +37,15 @@ export function getConnector(name: string): StorageConnectorInterface {
         if (!config) {
             throw new StorageConnectorError(`[config] is missing. Use first setConfig() to provide a configuration.`);
         }
-        const connectorsCfg = config.connectors as any;
-        if (!connectorsCfg[name]) {
-            throw new StorageConnectorError(`[config.connectors.${name}] has not been defined`);
+        if (!config.connectors.hasOwnProperty(name)) {
+            throw new StorageConnectorError(`The configuration of the connector [${name}] is undefined. 
+            Make sure to save the configuration of the connector under [connectors.${name}] key in your application configuration file.`);
         }
-        if (!(connectors as any)[name]) {
-            throw new StorageConnectorError(`[${name}] has not been defined`);
+        if (!connectors.hasOwnProperty(name)) {
+            throw new StorageConnectorError(`No connector found with such name [${name}]. Make sure the connector name is correct.`);
         }
-        const connectorConfig = connectorsCfg[name];
-        connectorsInstances[name] = (connectors as any)[name]({ config: connectorConfig });
+        const connectorConfig = config.connectors[name];
+        connectorsInstances[name] = connectors[name]({ config: connectorConfig });
     }
     return connectorsInstances[name];
 }

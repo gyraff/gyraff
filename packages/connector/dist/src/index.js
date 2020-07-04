@@ -13,11 +13,10 @@ const connectors = {
 };
 const connectorsInstances = {};
 function registerConnector(name, connector) {
-    const ctrs = connectors;
-    if (ctrs[name]) {
-        throw new error_1.StorageConnectorError(`A connector with name [${name}] already exists.`);
+    if (connectors.hasOwnProperty(name)) {
+        throw new error_1.StorageConnectorError(`The storage connector [${name}] already exists.`);
     }
-    ctrs[name] = connector;
+    connectors[name] = connector;
 }
 exports.registerConnector = registerConnector;
 function setConfig(cfg) {
@@ -37,14 +36,14 @@ function getConnector(name) {
         if (!config) {
             throw new error_1.StorageConnectorError(`[config] is missing. Use first setConfig() to provide a configuration.`);
         }
-        const connectorsCfg = config.connectors;
-        if (!connectorsCfg[name]) {
-            throw new error_1.StorageConnectorError(`[config.connectors.${name}] has not been defined`);
+        if (!config.connectors.hasOwnProperty(name)) {
+            throw new error_1.StorageConnectorError(`The configuration of the connector [${name}] is undefined. 
+            Make sure to save the configuration of the connector under [connectors.${name}] key in your application configuration file.`);
         }
-        if (!connectors[name]) {
-            throw new error_1.StorageConnectorError(`[${name}] has not been defined`);
+        if (!connectors.hasOwnProperty(name)) {
+            throw new error_1.StorageConnectorError(`No connector found with such name [${name}]. Make sure the connector name is correct.`);
         }
-        const connectorConfig = connectorsCfg[name];
+        const connectorConfig = config.connectors[name];
         connectorsInstances[name] = connectors[name]({ config: connectorConfig });
     }
     return connectorsInstances[name];
