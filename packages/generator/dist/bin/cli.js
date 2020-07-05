@@ -16,6 +16,8 @@ const baseDir = path_1.resolve(__dirname, './../../');
 const generatorsPath = path_1.resolve(__dirname, '../src');
 const hugen = `${baseDir}/node_modules/.bin/hygen`;
 const [generator, action, name] = yargs_1.argv._;
+let appLang;
+let args = `--outDir ${process.env.PWD}`;
 function print(lines, sanitize = true) {
     const text = sanitize
         ? lines
@@ -61,21 +63,29 @@ print(chalk_1.default.green(figlet_1.default.textSync('Gyraff', {
     horizontalLayout: 'default',
     verticalLayout: 'default',
 })), false);
-if (!generator || !action || !name)
+if (!generator || !action || !name) {
     error('Syntax error.');
-if (!['application', 'module'].includes(generator))
+}
+if (!['application', 'module'].includes(generator)) {
     error('Invalid command');
-if (action !== 'new')
+}
+if (action !== 'new') {
     error('Invalid action');
-if (generator === 'application' && !yargs_1.argv.appLang)
-    error(`Missing application language.`);
-if (generator === 'application' && !supportedLang.includes(yargs_1.argv.appLang))
-    error(`Application language is invalid or not supported`);
-let cmd = `${hugen} ${yargs_1.argv.appLang}-${generator} ${action} ${name} --outDir ${process.env.PWD}`;
-if (generator === 'module') {
+}
+validateName(name);
+if (generator === 'application') {
+    if (!yargs_1.argv.appLang) {
+        error(`Missing application language.`);
+    }
+    if (!supportedLang.includes(yargs_1.argv.appLang)) {
+        error(`Application language is invalid or not supported`);
+    }
+    appLang = yargs_1.argv.appLang;
+}
+else {
     let gyraffRC = {};
     try {
-        const data = fs_1.readFileSync('./gyraffrc', 'utf8');
+        const data = fs_1.readFileSync(`${process.env.PWD}/.gyraffrc`, 'utf8');
         gyraffRC = JSON.parse(data);
     }
     catch (e) {
@@ -86,26 +96,32 @@ if (generator === 'module') {
     const curDir = path_1.resolve('./');
     if (curDir.split('/').pop() !== gyraffRC.appName)
         error(`Invalid application directory!`);
-    cmd += ` --appName ${gyraffRC.appName}  --appLang ${gyraffRC.appLang}`;
-    if (yargs_1.argv.skipModel)
-        cmd += ` --skipModel`;
-    if (yargs_1.argv.skipController)
-        cmd += ` --skipController`;
-    if (yargs_1.argv.skipRepository)
-        cmd += ` --skipRepository`;
-    if (yargs_1.argv.skipValidator)
-        cmd += ` --skipValidator`;
-    if (yargs_1.argv.skipView)
-        cmd += ` --skipView`;
-    if (yargs_1.argv.skipRoutes)
-        cmd += ` --skipRoutes`;
+    if (!supportedLang.includes(gyraffRC.appLang)) {
+        error(`Application language is invalid or not supported`);
+    }
+    appLang = gyraffRC.appLang;
+    args += ` --appName ${gyraffRC.appName}  --appLang ${gyraffRC.appLang}`;
+    if (generator === 'module') {
+        if (yargs_1.argv.skipModel)
+            args += ` --skipModel`;
+        if (yargs_1.argv.skipController)
+            args += ` --skipController`;
+        if (yargs_1.argv.skipRepository)
+            args += ` --skipRepository`;
+        if (yargs_1.argv.skipValidator)
+            args += ` --skipValidator`;
+        if (yargs_1.argv.skipView)
+            args += ` --skipView`;
+        if (yargs_1.argv.skipRoutes)
+            args += ` --skipRoutes`;
+    }
 }
+const cmd = `${hugen} ${appLang}-${generator} ${action} ${name} ${args}`;
 child_process_1.exec(cmd, {
     cwd: generatorsPath,
 }, (err, stdout) => {
     if (err)
         error(err.message);
-    print(stdout);
     print('Done!');
 });
 //# sourceMappingURL=cli.js.map

@@ -14,6 +14,9 @@ const generatorsPath = resolve(__dirname, '../src');
 const hugen = `${baseDir}/node_modules/.bin/hygen`;
 const [generator, action, name] = argv._;
 
+let appLang;
+let args = `--outDir ${process.env.PWD}`;
+
 function print(lines: string, sanitize = true): void {
     const text = sanitize
         ? lines
@@ -69,34 +72,55 @@ print(
     false,
 );
 
-if (!generator || !action || !name) error('Syntax error.');
-if (!['application', 'module'].includes(generator)) error('Invalid command');
-if (action !== 'new') error('Invalid action');
-if (generator === 'application' && !argv.appLang) error(`Missing application language.`);
-if (generator === 'application' && !supportedLang.includes(argv.appLang as string)) error(`Application language is invalid or not supported`);
-
-let cmd = `${hugen} ${argv.appLang}-${generator} ${action} ${name} --outDir ${process.env.PWD}`;
-
-if (generator === 'module') {
+if (!generator || !action || !name) {
+    error('Syntax error.');
+}
+if (!['application', 'module'].includes(generator)) {
+    error('Invalid command');
+}
+if (action !== 'new') {
+    error('Invalid action');
+}
+validateName(name);
+if (generator === 'application') {
+    if (!argv.appLang) {
+        error(`Missing application language.`);
+    }
+    if (!supportedLang.includes(argv.appLang as string)) {
+        error(`Application language is invalid or not supported`);
+    }
+    appLang = argv.appLang;
+} else {
     let gyraffRC: { appName?: string; appLang?: string } = {};
     try {
-        const data = readFileSync('./gyraffrc', 'utf8');
+        const data = readFileSync(`${process.env.PWD}/.gyraffrc`, 'utf8');
         gyraffRC = JSON.parse(data);
     } catch (e) {
         error(`[gyraffrc] file could not be found. Make sure you are in the application root directory.`);
     }
     if (!gyraffRC.appName || !gyraffRC.appLang) error('Invalid [gyraffrc] file.');
+
+    // validate appName
     const curDir = resolve('./');
     if (curDir.split('/').pop() !== gyraffRC.appName) error(`Invalid application directory!`);
-    // if (!existsSync(`./${argv.appName}`)) error(`Application [${argv.appName}] is not found.`);
-    cmd += ` --appName ${gyraffRC.appName}  --appLang ${gyraffRC.appLang}`;
-    if (argv.skipModel) cmd += ` --skipModel`;
-    if (argv.skipController) cmd += ` --skipController`;
-    if (argv.skipRepository) cmd += ` --skipRepository`;
-    if (argv.skipValidator) cmd += ` --skipValidator`;
-    if (argv.skipView) cmd += ` --skipView`;
-    if (argv.skipRoutes) cmd += ` --skipRoutes`;
+
+    // validate appLang
+    if (!supportedLang.includes(gyraffRC.appLang as string)) {
+        error(`Application language is invalid or not supported`);
+    }
+    appLang = gyraffRC.appLang as string;
+    args += ` --appName ${gyraffRC.appName}  --appLang ${gyraffRC.appLang}`;
+    if (generator === 'module') {
+        if (argv.skipModel) args += ` --skipModel`;
+        if (argv.skipController) args += ` --skipController`;
+        if (argv.skipRepository) args += ` --skipRepository`;
+        if (argv.skipValidator) args += ` --skipValidator`;
+        if (argv.skipView) args += ` --skipView`;
+        if (argv.skipRoutes) args += ` --skipRoutes`;
+    }
 }
+
+const cmd = `${hugen} ${appLang}-${generator} ${action} ${name} ${args}`;
 
 exec(
     cmd,
@@ -105,7 +129,6 @@ exec(
     },
     (err, stdout) => {
         if (err) error(err.message);
-        print(stdout);
         print('Done!');
     },
 );
