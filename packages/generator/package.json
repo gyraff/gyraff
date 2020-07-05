@@ -1,6 +1,6 @@
 {
   "name": "@gyraff/generator",
-  "version": "1.0.47",
+  "version": "1.0.48",
   "description": "Gyraff - Application and module generator",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
