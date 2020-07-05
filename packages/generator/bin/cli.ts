@@ -73,7 +73,7 @@ if (!generator || !action || !name) error('Syntax error.');
 if (!['application', 'module'].includes(generator)) error('Invalid command');
 if (action !== 'new') error('Invalid action');
 if (generator === 'application' && !argv.appLang) error(`Missing application language.`);
-if (!supportedLang.includes(argv.appLang as string)) error(`Application language is invalid or not supported`);
+if (generator === 'application' && !supportedLang.includes(argv.appLang as string)) error(`Application language is invalid or not supported`);
 
 let cmd = `${hugen} ${argv.appLang}-${generator} ${action} ${name} --outDir ${process.env.PWD}`;
 

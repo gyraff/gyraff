@@ -69,7 +69,7 @@ if (action !== 'new')
     error('Invalid action');
 if (generator === 'application' && !yargs_1.argv.appLang)
     error(`Missing application language.`);
-if (!supportedLang.includes(yargs_1.argv.appLang))
+if (generator === 'application' && !supportedLang.includes(yargs_1.argv.appLang))
     error(`Application language is invalid or not supported`);
 let cmd = `${hugen} ${yargs_1.argv.appLang}-${generator} ${action} ${name} --outDir ${process.env.PWD}`;
 if (generator === 'module') {
