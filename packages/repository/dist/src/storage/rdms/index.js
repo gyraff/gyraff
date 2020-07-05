@@ -9,28 +9,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SQLiteStorage = void 0;
+exports.RDMSStorage = void 0;
 const factory_1 = require("@gyraff/factory");
 const storage_error_1 = require("../error/storage-error");
-exports.SQLiteStorage = factory_1.ComposableFactory({
+exports.RDMSStorage = factory_1.ComposableFactory({
     tableName: null,
-    knexStorageConnector: null,
-    init({ tableName, knexStorageConnector }) {
+    storageConnector: null,
+    init({ tableName, storageConnector }) {
         if (!tableName) {
             throw new storage_error_1.RepositoryStorageError('[tableName] is required');
         }
-        if (!knexStorageConnector) {
-            throw new storage_error_1.RepositoryStorageError('[knexStorageConnector] is required');
+        if (!storageConnector) {
+            throw new storage_error_1.RepositoryStorageError('[SQLiteStorageConnector] is required');
         }
         this.tableName = tableName;
-        this.knexStorageConnector = knexStorageConnector;
+        this.storageConnector = storageConnector;
     },
     create(data, options = {}) {
         return __awaiter(this, void 0, void 0, function* () {
             if (typeof data !== 'object') {
                 throw new storage_error_1.RepositoryStorageError('Invalid [data] parameter type.');
             }
-            const connection = yield this.knexStorageConnector.getConnection();
+            const connection = yield this.storageConnector.getConnection();
             const [id] = yield connection(this.tableName).insert(data, ['id']);
             if (options.returnId === true)
                 return id;
@@ -60,7 +60,7 @@ exports.SQLiteStorage = factory_1.ComposableFactory({
             if (!data.id) {
                 throw new storage_error_1.RepositoryStorageError('Missing [data.id] parameter.');
             }
-            const connection = yield this.knexStorageConnector.getConnection();
+            const connection = yield this.storageConnector.getConnection();
             yield connection(this.tableName)
                 .where({ id: data.id })
                 .update(data);
@@ -95,7 +95,7 @@ exports.SQLiteStorage = factory_1.ComposableFactory({
             if (!Array.isArray(ids) || !ids.length) {
                 throw new storage_error_1.RepositoryStorageError('Invalid [ids] parameter type. Expected a non-empty array.');
             }
-            const connection = yield this.knexStorageConnector.getConnection();
+            const connection = yield this.storageConnector.getConnection();
             yield connection(this.tableName)
                 .where('id', 'in', ids)
                 .delete();
@@ -106,7 +106,7 @@ exports.SQLiteStorage = factory_1.ComposableFactory({
             if (typeof filter !== 'object' && typeof filter !== 'function') {
                 throw new storage_error_1.RepositoryStorageError('Invalid [data] parameter type.');
             }
-            const connection = yield this.knexStorageConnector.getConnection();
+            const connection = yield this.storageConnector.getConnection();
             return connection.table(this.tableName).where(filter);
         });
     },
@@ -126,7 +126,7 @@ exports.SQLiteStorage = factory_1.ComposableFactory({
             if (!id) {
                 throw new storage_error_1.RepositoryStorageError('Missing [id] parameter.');
             }
-            const connection = yield this.knexStorageConnector.getConnection();
+            const connection = yield this.storageConnector.getConnection();
             yield connection(this.tableName)
                 .where({ id })
                 .delete();

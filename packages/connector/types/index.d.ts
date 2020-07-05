@@ -4,7 +4,9 @@ import { ConfigInterface } from '../src/config/contract';
 
 export { StorageConnectorFactoryType, StorageConnectorInterface } from '../src/connectors/contract';
 export { ConfigInterface } from '../src/config/contract';
-export { KnexStorageConnectorInterface, KnexStorageConnectorFactoryType } from '../src/connectors/rdms/contract';
+export { RDMSStorageConnectorInterface, RDMSStorageConnectorFactoryType } from '../src/connectors/rdms/contract';
+export { MySQLStorageConnectorFactoryType, MySQLStorageConnectorType } from '../src/connectors/rdms/mysql/contract';
+export { SQLiteStorageConnectorFactoryType, SQLiteStorageConnectorType } from '../src/connectors/rdms/sqlite/contract';
 export {
     RedisStorageConnectorInterface,
     RedisStorageConnectorFactoryType,

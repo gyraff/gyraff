@@ -3,13 +3,13 @@ to: <%if (!locals.skipRepository) { %><%= outDir  %>/src/repositories/<%= namePl
 unless_exists: true
 ---
 import { SQLiteStorage } from '@gyraff/repository';
-import { getConnector, KnexStorageConnectorInterface } from '@gyraff/connector';
+import { getConnector, SQLiteStorageConnectorType } from '@gyraff/connector';
 import { ApplicationConfigInterface } from '@gyraff/core';
 
 export function $<%= namePluralCamelized %>RepositoryStorage(config: ApplicationConfigInterface) {
-    const knexStorageConnector: KnexStorageConnectorInterface = getConnector('SQLiteStorageConnector');
+    const storageConnector: SQLiteStorageConnectorType = getConnector('SQLiteStorageConnector');
     return SQLiteStorage({
         tableName: '<%= namePluralUnderscored %>',
-        knexStorageConnector,
+        storageConnector,
     });
 }

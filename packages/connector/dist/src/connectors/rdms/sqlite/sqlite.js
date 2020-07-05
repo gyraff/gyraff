@@ -14,9 +14,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SQLiteStorageConnector = void 0;
 const knex_1 = __importDefault(require("knex"));
-const knex_2 = require("./knex");
-const error_1 = require("../../error");
-exports.SQLiteStorageConnector = knex_2.KnexStorageConnector.compose({
+const index_1 = require("../index");
+const error_1 = require("../../../error");
+exports.SQLiteStorageConnector = index_1.RDMSStorageConnector.compose({
     createConnection() {
         return __awaiter(this, void 0, void 0, function* () {
             const config = this.getConfig();

@@ -1,30 +1,30 @@
 import { ComposableFactory } from '@gyraff/factory';
-import { SQLiteStorageInterface } from './contract';
+import { RDMSStorageInterface } from './contract';
 import Knex from 'knex';
-import { KnexStorageConnectorInterface } from '@gyraff/connector';
+import { SQLiteStorageConnectorType } from '@gyraff/connector';
 import { RepositoryStorageError } from '../error/storage-error';
 import { StorageDataType } from '../contract';
 
-export const SQLiteStorage = ComposableFactory<SQLiteStorageInterface>({
+export const RDMSStorage = ComposableFactory<RDMSStorageInterface>({
     tableName: null,
-    knexStorageConnector: null,
+    storageConnector: null,
 
-    init({ tableName, knexStorageConnector }) {
+    init({ tableName, storageConnector }) {
         if (!tableName) {
             throw new RepositoryStorageError('[tableName] is required');
         }
-        if (!knexStorageConnector) {
-            throw new RepositoryStorageError('[knexStorageConnector] is required');
+        if (!storageConnector) {
+            throw new RepositoryStorageError('[SQLiteStorageConnector] is required');
         }
         this.tableName = tableName;
-        this.knexStorageConnector = knexStorageConnector;
+        this.storageConnector = storageConnector;
     },
 
     async create(data: StorageDataType, options: { [p: string]: any } = {}) {
         if (typeof data !== 'object') {
             throw new RepositoryStorageError('Invalid [data] parameter type.');
         }
-        const connection = await (this.knexStorageConnector as KnexStorageConnectorInterface).getConnection();
+        const connection = await (this.storageConnector as SQLiteStorageConnectorType).getConnection();
         const [id] = await connection(this.tableName as string).insert(data, ['id']);
         if (options.returnId === true) return id;
         return this.findById(id) as StorageDataType;
@@ -35,7 +35,7 @@ export const SQLiteStorage = ComposableFactory<SQLiteStorageInterface>({
             throw new RepositoryStorageError('Invalid [data] parameter type. Expected a non-empty array.');
         }
 
-        // const connection = await this.knexStorageConnector.getConnection();
+        // const connection = await this.SQLiteStorageConnector.getConnection();
         // const ids = await connection(this.tableName).insert(data, ['id']);
         const ids: number[] = [];
         for (const item of data) {
@@ -54,7 +54,7 @@ export const SQLiteStorage = ComposableFactory<SQLiteStorageInterface>({
         if (!data.id) {
             throw new RepositoryStorageError('Missing [data.id] parameter.');
         }
-        const connection = await (this.knexStorageConnector as KnexStorageConnectorInterface).getConnection();
+        const connection = await (this.storageConnector as SQLiteStorageConnectorType).getConnection();
         await connection(this.tableName as string)
             .where({ id: data.id })
             .update(data);
@@ -86,7 +86,7 @@ export const SQLiteStorage = ComposableFactory<SQLiteStorageInterface>({
         if (!Array.isArray(ids) || !ids.length) {
             throw new RepositoryStorageError('Invalid [ids] parameter type. Expected a non-empty array.');
         }
-        const connection = await (this.knexStorageConnector as KnexStorageConnectorInterface).getConnection();
+        const connection = await (this.storageConnector as SQLiteStorageConnectorType).getConnection();
         await connection(this.tableName as string)
             .where('id', 'in', ids)
             .delete();
@@ -96,7 +96,7 @@ export const SQLiteStorage = ComposableFactory<SQLiteStorageInterface>({
         if (typeof filter !== 'object' && typeof filter !== 'function') {
             throw new RepositoryStorageError('Invalid [data] parameter type.');
         }
-        const connection = await (this.knexStorageConnector as KnexStorageConnectorInterface).getConnection();
+        const connection = await (this.storageConnector as SQLiteStorageConnectorType).getConnection();
         return connection.table(this.tableName as string).where(filter);
     },
 
@@ -113,7 +113,7 @@ export const SQLiteStorage = ComposableFactory<SQLiteStorageInterface>({
         if (!id) {
             throw new RepositoryStorageError('Missing [id] parameter.');
         }
-        const connection = await (this.knexStorageConnector as KnexStorageConnectorInterface).getConnection();
+        const connection = await (this.storageConnector as SQLiteStorageConnectorType).getConnection();
         await connection(this.tableName as string)
             .where({ id })
             .delete();

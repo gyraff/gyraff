@@ -1,7 +1,7 @@
-import { SQLiteStorageConnector } from './connectors/rdms/sqlite';
+import { SQLiteStorageConnector } from './connectors/rdms/sqlite/sqlite';
 import { IORedisStorageConnector } from './connectors/redis/ioredis';
 import { RedisStorageConnector } from './connectors/redis/redis';
-import { MySQLStorageConnector } from './connectors/rdms/mysql';
+import { MySQLStorageConnector } from './connectors/rdms/mysql/mysql';
 import { StorageConnectorFactoryType, StorageConnectorInterface } from './connectors/contract';
 import { ConfigInterface } from './config/contract';
 import { StorageConnectorError } from './error';

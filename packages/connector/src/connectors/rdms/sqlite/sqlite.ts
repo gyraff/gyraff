@@ -1,8 +1,8 @@
 import Knex from 'knex';
-import { KnexStorageConnector } from './knex';
-import { StorageConnectorError } from '../../error';
+import { RDMSStorageConnector } from '../index';
+import { StorageConnectorError } from '../../../error';
 
-export const SQLiteStorageConnector = KnexStorageConnector.compose<{}>({
+export const SQLiteStorageConnector = RDMSStorageConnector.compose<{}>({
     async createConnection() {
         const config = this.getConfig();
         const connection = Knex(config);

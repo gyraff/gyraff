@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getConnector = exports.getConnectorsNames = exports.setConfig = exports.registerConnector = void 0;
-const sqlite_1 = require("./connectors/rdms/sqlite");
+const sqlite_1 = require("./connectors/rdms/sqlite/sqlite");
 const ioredis_1 = require("./connectors/redis/ioredis");
 const redis_1 = require("./connectors/redis/redis");
-const mysql_1 = require("./connectors/rdms/mysql");
+const mysql_1 = require("./connectors/rdms/mysql/mysql");
 const error_1 = require("./error");
 let config;
 const connectors = {

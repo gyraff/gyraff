@@ -3,7 +3,7 @@ import Knex from 'knex';
 import { Model, ModelFactoryType, ModelInterface } from '@gyraff/model';
 import { Repository, SQLiteStorage } from '../index';
 import { RepositoryInterface } from '../src/contract';
-import { getConnector, KnexStorageConnectorInterface, setConfig } from '@gyraff/connector';
+import {getConnector, setConfig, SQLiteStorageConnectorType} from '@gyraff/connector';
 import { StorageInterface } from '../src/storage/contract';
 
 
@@ -37,7 +37,7 @@ setConfig({
     },
 });
 
-const connector: KnexStorageConnectorInterface = getConnector('SQLiteStorageConnector');
+const connector: SQLiteStorageConnectorType = getConnector('SQLiteStorageConnector');
 
 beforeEach(async () => {
     await new Promise((resolve, reject) => {
@@ -73,7 +73,7 @@ const TodoRepository = Repository.compose<TodoRepositoryInterface>({
     Model: TodoModel,
     storage: SQLiteStorage({
         tableName: 'todos',
-        knexStorageConnector: connector,
+        storageConnector: connector,
     }),
     async findByStatus(status: number): Promise<ModelInterface[]> {
         const r = await (this.storage as StorageInterface).find({ status: 1 });

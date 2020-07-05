@@ -8,9 +8,9 @@ const { getConnector } = require('@gyraff/connector');
 
 
 module.exports = function $<%= namePluralCamelized %>RepositoryStorage(config) {
-    const knexStorageConnector = getConnector('SQLiteStorageConnector');
+    const SQLiteStorageConnector = getConnector('SQLiteStorageConnector');
     return SQLiteStorage({
         tableName: '<%= namePluralUnderscored %>',
-        knexStorageConnector,
+        storageConnector,
     });
 }
