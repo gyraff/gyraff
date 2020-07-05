@@ -4,6 +4,8 @@ var src_1 = require("./src");
 Object.defineProperty(exports, "Repository", { enumerable: true, get: function () { return src_1.Repository; } });
 var sqlite_1 = require("./src/storage/rdms/sqlite");
 Object.defineProperty(exports, "SQLiteStorage", { enumerable: true, get: function () { return sqlite_1.SQLiteStorage; } });
+var mysql_1 = require("./src/storage/rdms/mysql");
+Object.defineProperty(exports, "MySQLStorage", { enumerable: true, get: function () { return mysql_1.MySQLStorage; } });
 var error_1 = require("./src/error");
 Object.defineProperty(exports, "RepositoryError", { enumerable: true, get: function () { return error_1.RepositoryError; } });
 var storage_error_1 = require("./src/storage/error/storage-error");
