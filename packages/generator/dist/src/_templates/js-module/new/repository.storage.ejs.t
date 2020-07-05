@@ -8,7 +8,7 @@ const { getConnector } = require('@gyraff/connector');
 
 
 module.exports = function $<%= namePluralCamelized %>RepositoryStorage(config) {
-    const SQLiteStorageConnector = getConnector('SQLiteStorageConnector');
+    const storageConnector = getConnector('SQLiteStorageConnector');
     return SQLiteStorage({
         tableName: '<%= namePluralUnderscored %>',
         storageConnector,
