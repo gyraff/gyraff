@@ -6,6 +6,7 @@ import figlet from 'figlet';
 import { argv } from 'yargs';
 import { exec } from 'child_process';
 import { EOL } from 'os';
+import { readFileSync } from 'fs';
 
 const supportedLang = ['js', 'ts'];
 const baseDir = resolve(__dirname, './../../');
@@ -37,11 +38,11 @@ function help(): void {
                 
         To create a new module run: 
             
-        gyraff module new <module name> --appName <application name> --appLang <application language> [--skipModel] [--skipController] [--skipRepository] [--skipValidator] [--skipRoutes] [--skipView]
+        gyraff module new <module name> [--skipModel] [--skipController] [--skipRepository] [--skipValidator] [--skipRoutes] [--skipView]
                 
         Example: 
             
-        gyraff module new user-notifications --appName my-awsome-app --applang js
+        gyraff module new user-notifications
     `);
 }
 
@@ -71,18 +72,24 @@ print(
 if (!generator || !action || !name) error('Syntax error.');
 if (!['application', 'module'].includes(generator)) error('Invalid command');
 if (action !== 'new') error('Invalid action');
-if (!argv.appLang) error(`Missing application language.`);
+if (generator === 'application' && !argv.appLang) error(`Missing application language.`);
 if (!supportedLang.includes(argv.appLang as string)) error(`Application language is invalid or not supported`);
 
 let cmd = `${hugen} ${argv.appLang}-${generator} ${action} ${name} --outDir ${process.env.PWD}`;
 
 if (generator === 'module') {
-    if (!argv.appName) error('appName parameter is required');
-    validateName(argv.appName as string);
+    let gyraffRC: { appName?: string; appLang?: string } = {};
+    try {
+        const data = readFileSync('./gyraffrc', 'utf8');
+        gyraffRC = JSON.parse(data);
+    } catch (e) {
+        error(`[gyraffrc] file could not be found. Make sure you are in the application root directory.`);
+    }
+    if (!gyraffRC.appName || !gyraffRC.appLang) error('Invalid [gyraffrc] file.');
     const curDir = resolve('./');
-    if (curDir.split('/').pop() !== argv.appName) error(`Invalid application directory!`);
+    if (curDir.split('/').pop() !== gyraffRC.appName) error(`Invalid application directory!`);
     // if (!existsSync(`./${argv.appName}`)) error(`Application [${argv.appName}] is not found.`);
-    cmd += ` --appName ${argv.appName}`;
+    cmd += ` --appName ${gyraffRC.appName}  --appLang ${gyraffRC.appLang}`;
     if (argv.skipModel) cmd += ` --skipModel`;
     if (argv.skipController) cmd += ` --skipController`;
     if (argv.skipRepository) cmd += ` --skipRepository`;
