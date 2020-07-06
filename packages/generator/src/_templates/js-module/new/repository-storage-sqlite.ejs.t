@@ -1,5 +1,5 @@
 ---
-to: <%if (!locals.skipRepository) { %><%= outDir  %>/src/repositories/<%= namePluralDashed %>/storage/index.js<%}%>
+to: <%if (!locals.skipRepository) { %><%= outDir  %>/src/repositories/<%= namePluralDashed %>/storage/sqlite.js<%}%>
 unless_exists: true
 ---
 'use strict';

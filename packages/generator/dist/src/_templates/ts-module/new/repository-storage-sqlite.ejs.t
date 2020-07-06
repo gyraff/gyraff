@@ -1,5 +1,5 @@
 ---
-to: <%if (!locals.skipRepository) { %><%= outDir  %>/src/repositories/<%= namePluralDashed %>/storage/index.ts<%}%>
+to: <%if (!locals.skipRepository) { %><%= outDir  %>/src/repositories/<%= namePluralDashed %>/storage/sqlite.ts<%}%>
 unless_exists: true
 ---
 import { SQLiteStorage } from '@gyraff/repository';
