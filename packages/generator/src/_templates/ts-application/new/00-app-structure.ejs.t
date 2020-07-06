@@ -13,5 +13,7 @@ sh: "mkdir -p
 <%= outDir  %>/<%= name %>/data/logs
 <%= outDir  %>/<%= name %>/data/storage/SQLiteStorage/migrations
 <%= outDir  %>/<%= name %>/data/storage/SQLiteStorage/seeds
+<%= outDir  %>/<%= name %>/data/storage/MySQLStorage/migrations
+<%= outDir  %>/<%= name %>/data/storage/MySQLStorage/seeds
 <%= outDir  %>/<%= name %>/test"
 ---

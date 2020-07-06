@@ -51,19 +51,38 @@ module.exports = {
                 useNullAsDefault: true,
                 debug: false,
                 connection: {
-                    filename: `${baseDir}/data/storage/SQLiteStorage/app.db`,
+                    filename: `${dataDir}/storage/SQLiteStorage/app.db`,
                 },
             },
+            /*
+            MySQLStorageConnector: {
+                client: 'mysql',
+                useNullAsDefault: true,
+                debug: false,
+                connection: {
+                    host: process.env.GYRAFF_MYSQL_HOST || 'localhost',
+                    user: process.env.GYRAFF_MYSQL_USER || 'root',
+                    password: process.env.GYRAFF_MYSQL_PASSWORD || 'password',
+                    database: process.env.GYRAFF_MYSQL_DATABASE || 'my-app-db'
+                },
+            },
+            */
         },
         migration: {
             SQLiteStorageConnector: {
-                dir: process.env.GYRAFF_SQLITE_MIGRATION_DIR || path.normalize(`${__dirname}/../../data/storage/SQLiteStorage/migrations`),
+                dir: process.env.GYRAFF_SQLITE_MIGRATION_DIR || path.normalize(`${dataDir}/storage/SQLiteStorage/migrations`),
                 autoMigrate: true,
                 seeds: {
-                    dir: process.env.GYRAFF_SQLITE_SEEDER_DIR || path.normalize(`${__dirname}/../../data/storage/SQLiteStorage/seeds`),
+                    dir: process.env.GYRAFF_SQLITE_SEEDER_DIR || path.normalize(`${dataDir}/storage/SQLiteStorage/seeds`),
                     autoSeed: true,
                 },
             },
+            /*
+            MySQLStorageConnector: {
+                dir: process.env.GYRAFF_MYSQL_MIGRATION_DIR || path.normalize(`${dataDir}/storage/MySQLStorage/migrations`),
+                autoMigrate: true,
+            },
+            */
         },
     }
 };
