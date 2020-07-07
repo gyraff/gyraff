@@ -1,9 +1,9 @@
 import Knex from 'knex';
-import { RDMSStorageConnectorInterface } from './contract';
+import {RDMSStorageConnectorFactoryType, RDMSStorageConnectorInterface} from './contract';
 import { StorageConnectorError } from '../../error';
 import { StorageConnector } from '../connector';
 
-export const RDMSStorageConnector = StorageConnector.compose<RDMSStorageConnectorInterface>({
+export const RDMSStorageConnector: RDMSStorageConnectorFactoryType = StorageConnector.compose<RDMSStorageConnectorInterface>({
     async createConnection() {
         const connection = Knex(this.getConfig());
 

@@ -1,8 +1,8 @@
 import { ComposableFactory } from '@gyraff/factory';
 import { StorageConnectorError } from '../error';
-import { StorageConnectorInterface } from './contract';
+import {StorageConnectorFactoryType, StorageConnectorInterface} from './contract';
 
-export const StorageConnector = ComposableFactory<StorageConnectorInterface>({
+export const StorageConnector: StorageConnectorFactoryType = ComposableFactory<StorageConnectorInterface>({
     config: null,
 
     connection: null,
