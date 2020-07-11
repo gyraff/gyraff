@@ -3,9 +3,9 @@ import { getConnector, SQLiteStorageConnectorType } from '@gyraff/connector';
 import { ApplicationConfigInterface } from '../../../../../../src/config/application/contract';
 
 export function $booksRepositoryStorage() {
-    const SQLiteStorageConnector: SQLiteStorageConnectorType = getConnector('SQLiteStorageConnector');
+    const storageConnector: SQLiteStorageConnectorType = getConnector('SQLiteStorageConnector');
     return SQLiteStorage({
         tableName: 'books',
-        SQLiteStorageConnector,
+        storageConnector,
     });
 }
