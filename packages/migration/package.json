@@ -1,6 +1,6 @@
 {
   "name": "@gyraff/migration",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Gyraff - Automated migrations and seeding",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
@@ -11,7 +11,7 @@
   "author": "Weyoss <weyoss@protonmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@gyraff/connector": "^1.0.16",
+    "@gyraff/connector": "^1.0.17",
     "@gyraff/error": "^1.0.15",
     "@gyraff/factory": "^1.0.15",
     "lodash": "4.17.15"
