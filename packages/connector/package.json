@@ -14,6 +14,7 @@
     "@gyraff/factory": "^1.0.15",
     "ioredis": "4.16.3",
     "knex": "0.21.0",
+    "mongodb": "^3.5.9",
     "redis": "3.0.2",
     "sqlite3": "4.1.1"
   },
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@types/ioredis": "4.14.9",
+    "@types/mongodb": "^3.5.25",
     "@types/redis": "2.8.18"
   },
   "publishConfig": {

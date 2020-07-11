@@ -7,6 +7,7 @@ export { ConfigInterface } from '../src/config/contract';
 export { RDMSStorageConnectorInterface, RDMSStorageConnectorFactoryType } from '../src/connectors/rdms/contract';
 export { MySQLStorageConnectorFactoryType, MySQLStorageConnectorType } from '../src/connectors/rdms/mysql/contract';
 export { SQLiteStorageConnectorFactoryType, SQLiteStorageConnectorType } from '../src/connectors/rdms/sqlite/contract';
+export { MongoDBConnectorInterface, MongoDBStorageConnectorFactoryType } from "../src/connectors/mongodb/contract";
 export {
     RedisStorageConnectorInterface,
     RedisStorageConnectorFactoryType,

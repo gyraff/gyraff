@@ -5,6 +5,7 @@ const sqlite_1 = require("./connectors/rdms/sqlite/sqlite");
 const ioredis_1 = require("./connectors/redis/ioredis");
 const redis_1 = require("./connectors/redis/redis");
 const mysql_1 = require("./connectors/rdms/mysql/mysql");
+const mongodb_1 = require("./connectors/mongodb");
 const error_1 = require("./error");
 let config;
 const connectors = {
@@ -12,6 +13,7 @@ const connectors = {
     SQLiteStorageConnector: sqlite_1.SQLiteStorageConnector,
     IORedisStorageConnector: ioredis_1.IORedisStorageConnector,
     RedisStorageConnector: redis_1.RedisStorageConnector,
+    MongoDBStorageConnector: mongodb_1.MongoDBStorageConnector,
 };
 const connectorsInstances = {};
 function registerConnector(name, connector) {

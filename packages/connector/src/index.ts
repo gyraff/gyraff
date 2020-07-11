@@ -2,6 +2,7 @@ import { SQLiteStorageConnector } from './connectors/rdms/sqlite/sqlite';
 import { IORedisStorageConnector } from './connectors/redis/ioredis';
 import { RedisStorageConnector } from './connectors/redis/redis';
 import { MySQLStorageConnector } from './connectors/rdms/mysql/mysql';
+import { MongoDBStorageConnector } from "./connectors/mongodb";
 import { StorageConnectorFactoryType, StorageConnectorInterface } from './connectors/contract';
 import { ConfigInterface } from './config/contract';
 import { StorageConnectorError } from './error';
@@ -13,6 +14,7 @@ const connectors: { [name: string]: StorageConnectorFactoryType } = {
     SQLiteStorageConnector,
     IORedisStorageConnector,
     RedisStorageConnector,
+    MongoDBStorageConnector,
 };
 
 const connectorsInstances: { [name: string]: StorageConnectorInterface } = {};
