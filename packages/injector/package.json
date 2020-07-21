@@ -14,7 +14,7 @@
     "@gyraff/error": "^1.0.15",
     "bottlejs": "1.7.2",
     "glob": "7.1.6",
-    "lodash": "4.17.15"
+    "lodash": "4.17.19"
   },
   "repository": {
     "type": "git",
