@@ -6,7 +6,7 @@
   "types": "./types/index.d.ts",
   "dependencies": {
     "@gyraff/error": "^1.0.15",
-    "lodash": "4.17.15"
+    "lodash": "4.17.19"
   },
   "scripts": {
     "tsc": "tsc"
