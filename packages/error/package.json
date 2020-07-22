@@ -11,7 +11,7 @@
   "author": "Weyoss <weyoss@protonmail.com>",
   "license": "MIT",
   "dependencies": {
-    "lodash": "4.17.15"
+    "lodash": "4.17.19"
   },
   "repository": {
     "type": "git",

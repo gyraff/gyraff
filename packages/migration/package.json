@@ -14,7 +14,7 @@
     "@gyraff/connector": "^1.0.17",
     "@gyraff/error": "^1.0.15",
     "@gyraff/factory": "^1.0.15",
-    "lodash": "4.17.15"
+    "lodash": "4.17.19"
   },
   "repository": {
     "type": "git",
