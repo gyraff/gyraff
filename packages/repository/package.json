@@ -1,6 +1,6 @@
 {
   "name": "@gyraff/repository",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "Gyraff - Repository design pattern implementation",
   "author": "Weyoss <weyoss@protonmail.com>",
   "license": "MIT",
@@ -10,10 +10,10 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@gyraff/connector": "^1.0.17",
-    "@gyraff/error": "^1.0.15",
-    "@gyraff/factory": "^1.0.15",
-    "@gyraff/model": "^1.0.18",
+    "@gyraff/connector": "^1.0.18",
+    "@gyraff/error": "^1.0.16",
+    "@gyraff/factory": "^1.0.16",
+    "@gyraff/model": "^1.0.19",
     "knex": "0.21.0"
   },
   "repository": {
